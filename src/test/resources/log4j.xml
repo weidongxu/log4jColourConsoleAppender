@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="console-plain" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+        </layout>
+    </appender>
+    
+    
+      <appender name="console-blue" class="org.apache.log4j.colour.AnsiColourConsoleAppender">
+        <param name="attribute" value="bright"/>
+        <param name="fontColor" value="BLUE"/>
+        <param name="backgroundColor" value="NONE"/>
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+            <!--<param name="ConversionPattern" value="%-5p %m%n" />-->
+
+        </layout>
+    </appender>
+
+
+    <appender name="console-red" class="org.apache.log4j.colour.AnsiColourConsoleAppender">
+        <param name="attribute" value="normal"/>
+        <param name="fontColor" value="red"/>
+        <param name="backgroundColor" value="NONE"/>
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+            <!--<param name="ConversionPattern" value="%-5p %m%n" />-->
+
+        </layout>
+    </appender>
+
+
+
+    <logger name="com.bytehelps.log4j.plain" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console-plain" />
+    </logger>
+
+    <logger name="com.bytehelps.log4j.colour" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="console-blue" />
+    </logger>
+
+
+
+    <root>
+        <priority value ="warn" />
+        <appender-ref ref="console-plain" />
+    </root>
+
+</log4j:configuration>
