@@ -1,4 +1,3 @@
-
 package org.apache.log4j.colour;
 
 import com.thoughtworks.xstream.XStream;
@@ -17,13 +16,11 @@ import java.lang.reflect.Method;
  */
 public final class AnsiColourConsoleAppender extends ConsoleAppender {
 
-
     private String attribute = "NORMAL";
     private String fontColor = "RED";
     private String backgroundColor = "BLACK";
 
     private XStream xStream = new XStream();
-
 
     public void setAttribute(String attribute) {
         this.attribute = attribute;
@@ -38,7 +35,7 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
     }
 
     @Override
-    public synchronized void setWriter(Writer writer){
+    public synchronized void setWriter(Writer writer) {
         reset();
         try {
             this.qw = createJustQuietWriter(writer, errorHandler);
@@ -49,9 +46,9 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
         writeHeader();
     }
 
-
     /**
-     *  Use javassit to create a proxy on QuietWriter Object
+     * Use javassit to create a proxy on QuietWriter Object
+     *
      * @param writer
      * @param errorHandler
      * @return
@@ -61,12 +58,11 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
         ProxyFactory factory = new ProxyFactory();
         factory.setSuperclass(QuietWriter.class);
 
-
         MethodHandler handler = new MethodHandler() {
 
             @Override
             public Object invoke(Object self, Method overridden, Method forwarder,
-                                 Object[] args) throws Throwable {
+                    Object[] args) throws Throwable {
                 if (overridden.getName().equalsIgnoreCase("write")) {
                     args[0] = getColoredMessage((String) args[0]);
                 }
@@ -85,7 +81,6 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
 
     }
 
-
     /**
      *
      * @param message
@@ -98,6 +93,5 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
 
         return AnsiColourProperty.format(message, _attri, _fColor, _bColor);
     }
-
 
 }

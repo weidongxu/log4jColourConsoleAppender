@@ -12,7 +12,7 @@ public class AnsiColourConsoleAppenderTest {
     private static final Logger logger = Logger.getLogger(AnsiColourConsoleAppenderTest.class);
 
     @Test
-    public void testName() throws Exception {
+    public void testColorMessageOnConsole() throws Exception {
 
         logger.info("This is an info message");
         logger.warn("This is a warning message");

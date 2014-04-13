@@ -10,6 +10,7 @@ public class AnsiColourProperty {
     private static final int BACK_COLOR_BASE = 40;
 
     public enum Attribute {
+
         NORMAL(0),
         BRIGHT(1),
         DIM(2),
@@ -70,38 +71,44 @@ public class AnsiColourProperty {
 
     }
 
-
     private static final String PREFIX = "\u001b["; //NOI18N
     private static final String SUFFIX = "m";
     private static final String SEPARATOR = ";";
     private static final String END = PREFIX + SUFFIX;
-
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     public static String format(String text, Color foreground) {
         return format(text, null, foreground, null);
     }
 
     public static String format(String text, Color foreground,
-                                Color background) {
+            Color background) {
         return format(text, null, foreground, background);
     }
 
     public static String format(String text, Attribute attr,
-                                Color foreground, Color background) {
+            Color foreground, Color background) {
+        if (text == null || text.length() == 0) {
+            return "";
+        }
+        text = text.replaceAll(LINE_SEPARATOR, "");
         StringBuilder buff = new StringBuilder();
 
-        if (attr != null)
+        if (attr != null) {
             buff.append(attr);
+        }
 
         if (foreground != null) {
-            if (buff.length() > 0)
+            if (buff.length() > 0) {
                 buff.append(SEPARATOR);
+            }
             buff.append(FONT_COLOR_BASE + foreground.ordinal());
         }
 
         if (background != null) {
-            if (buff.length() > 0)
+            if (buff.length() > 0) {
                 buff.append(SEPARATOR);
+            }
             buff.append(BACK_COLOR_BASE + background.ordinal());
         }
 
@@ -109,8 +116,8 @@ public class AnsiColourProperty {
         buff.append(SUFFIX);
         buff.append(text);
         buff.append(END);
+        buff.append(LINE_SEPARATOR);
         return buff.toString();
     }
-
 
 }
