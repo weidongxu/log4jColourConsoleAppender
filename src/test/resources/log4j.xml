@@ -11,7 +11,7 @@
     
     
       <appender name="console-blue" class="org.apache.log4j.colour.AnsiColourConsoleAppender">
-        <param name="attribute" value="bright"/>
+        <param name="attribute" value="normal"/>
         <param name="fontColor" value="BLUE"/>
         <param name="backgroundColor" value="NONE"/>
         <param name="Target" value="System.out" />
@@ -24,9 +24,9 @@
 
 
     <appender name="console-red" class="org.apache.log4j.colour.AnsiColourConsoleAppender">
-        <param name="attribute" value="normal"/>
-        <param name="fontColor" value="red"/>
-        <param name="backgroundColor" value="NONE"/>
+        <param name="attribute" value="bright"/>
+        <param name="fontColor" value="white"/>
+        <param name="backgroundColor" value="red"/>
         <param name="Target" value="System.out" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
@@ -42,9 +42,14 @@
         <appender-ref ref="console-plain" />
     </logger>
 
-    <logger name="com.bytehelps.log4j.colour" additivity="false">
-        <level value="warn" />
+    <logger name="com.bytehelps.log4j.colour.test.SimpleColourMessageTest" additivity="false">
+        <level value="info" />
         <appender-ref ref="console-blue" />
+    </logger>
+    
+    <logger name="com.bytehelps.log4j.colour.test.AnotherColourMessageTest" additivity="false">
+        <level value="warn" />
+        <appender-ref ref="console-red" />
     </logger>
 
 
