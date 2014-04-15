@@ -34,6 +34,43 @@
 
         </layout>
     </appender>
+    
+     <appender name="console-nwy" class="org.apache.log4j.colour.AnsiColourConsoleAppender">
+        <param name="attribute" value="normal"/>
+        <param name="fontColor" value="white"/>
+        <param name="backgroundColor" value="yellow"/>
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+            <!--<param name="ConversionPattern" value="%-5p %m%n" />-->
+
+        </layout>
+    </appender>
+    
+    <appender name="console-bmw" class="org.apache.log4j.colour.AnsiColourConsoleAppender">
+        <param name="attribute" value="bright"/>
+        <param name="fontColor" value="magenta"/>
+        <param name="backgroundColor" value="white"/>
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+            <!--<param name="ConversionPattern" value="%-5p %m%n" />-->
+
+        </layout>
+    </appender>
+    
+    
+    <appender name="console-bcb" class="org.apache.log4j.colour.AnsiColourConsoleAppender">
+        <param name="attribute" value="bright"/>
+        <param name="fontColor" value="cyan"/>
+        <param name="backgroundColor" value="black"/>
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+            <!--<param name="ConversionPattern" value="%-5p %m%n" />-->
+
+        </layout>
+    </appender>
 
 
 
@@ -44,12 +81,12 @@
 
     <logger name="com.bytehelps.log4j.colour.test.SimpleColourMessageTest" additivity="false">
         <level value="info" />
-        <appender-ref ref="console-blue" />
+        <appender-ref ref="console-bcb" />
     </logger>
     
     <logger name="com.bytehelps.log4j.colour.test.AnotherColourMessageTest" additivity="false">
         <level value="warn" />
-        <appender-ref ref="console-red" />
+        <appender-ref ref="console-nwy" />
     </logger>
 
 

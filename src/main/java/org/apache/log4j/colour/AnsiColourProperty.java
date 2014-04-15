@@ -1,7 +1,8 @@
 package org.apache.log4j.colour;
 
 /**
- *
+ *@author weidong xu (http://bytehelps.com)
+ *@version 1.0
  */
 public class AnsiColourProperty {
 

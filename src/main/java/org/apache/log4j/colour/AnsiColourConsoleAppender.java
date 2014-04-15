@@ -1,6 +1,6 @@
 package org.apache.log4j.colour;
 
-import com.thoughtworks.xstream.XStream;
+
 import javassist.util.proxy.MethodHandler;
 import javassist.util.proxy.ProxyFactory;
 import org.apache.log4j.ConsoleAppender;
@@ -11,7 +11,8 @@ import java.io.Writer;
 import java.lang.reflect.Method;
 
 /**
- * @author weidong.xu@bytehelps.com
+ * @author weidong.xu
+ * @version 1.0
  *
  */
 public final class AnsiColourConsoleAppender extends ConsoleAppender {
@@ -20,7 +21,7 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
     private String fontColor = "RED";
     private String backgroundColor = "BLACK";
 
-    private XStream xStream = new XStream();
+
 
     public void setAttribute(String attribute) {
         this.attribute = attribute;
@@ -47,7 +48,7 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
     }
 
     /**
-     * Use javassit to create a proxy on QuietWriter Object
+     * Use javassist to create a proxy on QuietWriter Object
      *
      * @param writer
      * @param errorHandler
@@ -84,7 +85,7 @@ public final class AnsiColourConsoleAppender extends ConsoleAppender {
     /**
      *
      * @param message
-     * @return
+     * @return 
      */
     protected String getColoredMessage(final String message) {
         AnsiColourProperty.Attribute _attri = AnsiColourProperty.Attribute.valueOf(attribute.toUpperCase());
